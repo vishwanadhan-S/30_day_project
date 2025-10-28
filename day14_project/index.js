@@ -1,16 +1,15 @@
 document.addEventListener('DOMContentLoaded', function () {
-    // DOM elements
+   
     const previousOperandElement = document.querySelector('.previous-operand');
     const currentOperandElement = document.querySelector('.current-operand');
     const buttons = document.querySelectorAll('button');
 
-    // Calculator state
+  
     let currentOperand = '0';
     let previousOperand = '';
     let operation = null;
     let resetCurrentOperand = false;
 
-    // Update the display
     function updateDisplay() {
         currentOperandElement.textContent = currentOperand;
         if (operation) {
@@ -20,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    // Add digit to current operand
+    
     function appendNumber(number) {
         if (resetCurrentOperand) {
             currentOperand = '';
@@ -36,7 +35,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    // Choose operation
+ 
     function chooseOperation(op) {
         if (currentOperand === '') return;
 
@@ -49,7 +48,7 @@ document.addEventListener('DOMContentLoaded', function () {
         resetCurrentOperand = true;
     }
 
-    // Perform calculation
+   
     function calculate() {
         let computation;
         const prev = parseFloat(previousOperand);
@@ -84,14 +83,14 @@ document.addEventListener('DOMContentLoaded', function () {
         resetCurrentOperand = true;
     }
 
-    // Clear the calculator
+   
     function clear() {
         currentOperand = '0';
         previousOperand = '';
         operation = null;
     }
 
-    // Delete the last digit
+  
     function deleteDigit() {
         if (resetCurrentOperand) return;
 
@@ -102,7 +101,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    // Handle button clicks
+  
     buttons.forEach(button => {
         button.addEventListener('click', () => {
             if (button.hasAttribute('data-number')) {
@@ -124,7 +123,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // Keyboard support
+   
     document.addEventListener('keydown', event => {
         if (event.key >= '0' && event.key <= '9') {
             appendNumber(event.key);

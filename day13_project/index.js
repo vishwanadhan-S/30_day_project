@@ -42,19 +42,19 @@ function startCountdown() {
         return;
     }
 
-    // Create target date object
+    
     targetDate = new Date(`${selectedDate}T${selectedTime}`);
 
-    // Check if the target date is in the future
+
     if (targetDate <= new Date()) {
         alert('Please select a future date and time');
         return;
     }
 
-    // Hide message
+
     messageEl.style.display = 'none';
 
-    // Start the countdown
+   
     updateCountdown();
     countdownInterval = setInterval(updateCountdown, 1000);
 }
@@ -63,20 +63,20 @@ function updateCountdown() {
     const now = new Date().getTime();
     const timeLeft = targetDate - now;
 
-    // If countdown is over
+   
     if (timeLeft < 0) {
         clearInterval(countdownInterval);
         displayCountdownComplete();
         return;
     }
 
-    // Calculate time units
+   
     const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
     const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
     const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
     const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
 
-    // Update display
+   
     daysEl.textContent = formatTime(days);
     hoursEl.textContent = formatTime(hours);
     minutesEl.textContent = formatTime(minutes);
@@ -97,16 +97,16 @@ function displayCountdownComplete() {
 function resetCountdown() {
     clearInterval(countdownInterval);
 
-    // Reset display
+
     daysEl.textContent = '00';
     hoursEl.textContent = '00';
     minutesEl.textContent = '00';
     secondsEl.textContent = '00';
 
-    // Hide message
+    
     messageEl.style.display = 'none';
 
-    // Reset inputs to default
+   
     dateInput.value = formattedDate;
     timeInput.value = formattedTime;
 }

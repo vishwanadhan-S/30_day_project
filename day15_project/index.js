@@ -1,18 +1,18 @@
 document.addEventListener('DOMContentLoaded', function () {
-    // DOM Elements
+   
     const taskInput = document.getElementById('task-input');
     const addBtn = document.getElementById('add-btn');
     const taskList = document.getElementById('task-list');
     const filterBtns = document.querySelectorAll('.filter-btn');
 
-    // State
+ 
     let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
     let currentFilter = 'all';
 
-    // Initialize the app
+    
     renderTasks();
 
-    // Event Listeners
+  
     addBtn.addEventListener('click', addTask);
     taskInput.addEventListener('keypress', function (e) {
         if (e.key === 'Enter') {
@@ -22,17 +22,17 @@ document.addEventListener('DOMContentLoaded', function () {
 
     filterBtns.forEach(btn => {
         btn.addEventListener('click', function () {
-            // Update active filter button
+           
             filterBtns.forEach(b => b.classList.remove('active'));
             this.classList.add('active');
 
-            // Set current filter and re-render
+            
             currentFilter = this.getAttribute('data-filter');
             renderTasks();
         });
     });
 
-    // Functions
+    
     function addTask() {
         const taskText = taskInput.value.trim();
 
@@ -79,38 +79,38 @@ document.addEventListener('DOMContentLoaded', function () {
         const taskText = taskItem.querySelector('.task-text');
         const task = tasks.find(t => t.id === id);
 
-        // Create input field
+      
         const editInput = document.createElement('input');
         editInput.type = 'text';
         editInput.className = 'edit-input';
         editInput.value = task.text;
 
-        // Create save button
+     
         const saveBtn = document.createElement('button');
         saveBtn.className = 'save-btn';
         saveBtn.textContent = 'Save';
 
-        // Replace task text with input and save button
+       
         taskItem.querySelector('.task-text').replaceWith(editInput);
         taskItem.querySelector('.task-actions').replaceWith(saveBtn);
 
-        // Focus and select text in input
+       
         editInput.focus();
         editInput.select();
 
-        // Save on Enter key
+        
         editInput.addEventListener('keypress', function (e) {
             if (e.key === 'Enter') {
                 saveEdit(id, editInput.value);
             }
         });
 
-        // Save on button click
+       
         saveBtn.addEventListener('click', function () {
             saveEdit(id, editInput.value);
         });
 
-        // Cancel on Escape key
+      
         editInput.addEventListener('keydown', function (e) {
             if (e.key === 'Escape') {
                 renderTasks();
@@ -145,10 +145,10 @@ document.addEventListener('DOMContentLoaded', function () {
             filteredTasks = tasks.filter(task => task.completed);
         }
 
-        // Clear task list
+    
         taskList.innerHTML = '';
 
-        // Show empty state if no tasks
+       
         if (filteredTasks.length === 0) {
             const emptyState = document.createElement('div');
             emptyState.className = 'empty-state';
@@ -163,7 +163,7 @@ document.addEventListener('DOMContentLoaded', function () {
             return;
         }
 
-        // Render tasks
+        
         filteredTasks.forEach(task => {
             const taskItem = document.createElement('li');
             taskItem.className = 'task-item';
@@ -180,7 +180,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             taskList.appendChild(taskItem);
 
-            // Add event listeners to the new task
+            
             const checkbox = taskItem.querySelector('.task-checkbox');
             const editBtn = taskItem.querySelector('.edit-btn');
             const deleteBtn = taskItem.querySelector('.delete-btn');

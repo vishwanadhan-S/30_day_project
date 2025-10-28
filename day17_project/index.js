@@ -62,19 +62,19 @@ startBtn.addEventListener('click', startQuiz);
 nextBtn.addEventListener('click', nextQuestion);
 restartBtn.addEventListener('click', restartQuiz);
 
-// Add event listeners to options
+
 optionsElements.forEach(option => {
     option.addEventListener('click', selectOption);
 });
 
-// Start the quiz
+
 function startQuiz() {
     startScreen.classList.remove('active');
     quizScreen.classList.add('active');
     showQuestion();
 }
 
-// Display current question and options
+
 function showQuestion() {
     resetOptions();
     const currentQuestion = quizQuestions[currentQuestionIndex];
@@ -90,25 +90,23 @@ function showQuestion() {
     feedbackElement.classList.add('hidden');
 }
 
-// Handle option selection
 function selectOption(e) {
-    if (nextBtn.disabled === false) return; // Prevent reselection after answer
+    if (nextBtn.disabled === false) return; 
 
     const selectedElement = e.target;
     const selectedIndex = parseInt(selectedElement.getAttribute('data-index'));
 
-    // Remove selection from all options
+   
     resetOptions();
 
-    // Add selection to clicked option
+
     selectedElement.classList.add('selected');
     selectedOption = selectedIndex;
 
-    // Enable the Next button
     nextBtn.disabled = false;
 }
 
-// Reset all option styles
+
 function resetOptions() {
     optionsElements.forEach(option => {
         option.classList.remove('selected', 'correct', 'incorrect');
@@ -116,21 +114,21 @@ function resetOptions() {
     selectedOption = null;
 }
 
-// Move to next question or show results
+
 function nextQuestion() {
-    // Check if answer is correct
+
     const currentQuestion = quizQuestions[currentQuestionIndex];
     const isCorrect = selectedOption === currentQuestion.correctAnswer;
 
-    // Show feedback
+
     showFeedback(isCorrect, currentQuestion);
 
-    // Update score if correct
+
     if (isCorrect) {
         score++;
     }
 
-    // Move to next question after a delay
+
     setTimeout(() => {
         currentQuestionIndex++;
 
@@ -142,9 +140,9 @@ function nextQuestion() {
     }, 2000);
 }
 
-// Show feedback for the current answer
+
 function showFeedback(isCorrect, question) {
-    // Highlight correct and incorrect answers
+
     optionsElements.forEach((option, index) => {
         if (index === question.correctAnswer) {
             option.classList.add('correct');
@@ -153,7 +151,7 @@ function showFeedback(isCorrect, question) {
         }
     });
 
-    // Display feedback message
+
     feedbackElement.classList.remove('hidden');
     if (isCorrect) {
         feedbackElement.textContent = "Correct! Well done.";
@@ -164,14 +162,14 @@ function showFeedback(isCorrect, question) {
     }
 }
 
-// Display final results
+
 function showResults() {
     quizScreen.classList.remove('active');
     resultsScreen.classList.add('active');
 
     scoreElement.textContent = `${score}/${quizQuestions.length}`;
 
-    // Set score message based on performance
+
     if (score === quizQuestions.length) {
         scoreMessageElement.textContent = "Perfect score! You're a quiz master!";
     } else if (score >= quizQuestions.length * 0.7) {
@@ -183,7 +181,7 @@ function showResults() {
     }
 }
 
-// Restart the quiz
+
 function restartQuiz() {
     currentQuestionIndex = 0;
     score = 0;

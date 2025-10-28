@@ -1,5 +1,5 @@
 
-// DOM Elements
+
 const lengthSlider = document.getElementById('length');
 const lengthValue = document.getElementById('lengthValue');
 const passwordOutput = document.getElementById('passwordOutput');
@@ -11,7 +11,7 @@ const algorithmSelect = document.getElementById('algorithm');
 const algorithmDescription = document.getElementById('algorithmDescription');
 const historyList = document.getElementById('historyList');
 
-// Character sets
+
 const characterSets = {
     lowercase: 'abcdefghijklmnopqrstuvwxyz',
     uppercase: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
@@ -19,7 +19,7 @@ const characterSets = {
     symbols: '!@#$%^&*()_+-=[]{}|;:,.<>?'
 };
 
-// Word lists for memorable passwords
+
 const wordList = [
     'apple', 'brave', 'cloud', 'dragon', 'eagle', 'flame', 'globe', 'heart',
     'ice', 'jump', 'king', 'light', 'moon', 'night', 'ocean', 'peace',
@@ -27,15 +27,14 @@ const wordList = [
     'young', 'zenith', 'alpha', 'beta', 'gamma', 'delta'
 ];
 
-// Password history
 let passwordHistory = [];
 
-// Update length value display
+
 lengthSlider.addEventListener('input', function () {
     lengthValue.textContent = this.value;
 });
 
-// Update algorithm description
+
 algorithmSelect.addEventListener('change', function () {
     updateAlgorithmDescription();
 });
@@ -51,10 +50,10 @@ function updateAlgorithmDescription() {
     algorithmDescription.textContent = descriptions[algorithm] || '';
 }
 
-// Initialize algorithm description
+
 updateAlgorithmDescription();
 
-// Generate password function
+
 function generatePassword() {
     const length = parseInt(lengthSlider.value);
     const algorithm = algorithmSelect.value;
@@ -63,7 +62,7 @@ function generatePassword() {
     const includeNumbers = document.getElementById('numbers').checked;
     const includeSymbols = document.getElementById('symbols').checked;
 
-    // Validate at least one character set is selected
+   
     if (!includeLowercase && !includeUppercase && !includeNumbers && !includeSymbols) {
         passwordOutput.textContent = 'Please select at least one character type';
         passwordOutput.style.color = '#e74c3c';
@@ -89,18 +88,18 @@ function generatePassword() {
             password = generateCryptoPassword(length, includeLowercase, includeUppercase, includeNumbers, includeSymbols);
     }
 
-    // Display the password
+  
     passwordOutput.textContent = password;
     passwordOutput.style.color = '#2c3e50';
 
-    // Calculate and display strength
+    
     updatePasswordStrength(password);
 
-    // Add to history
+    
     addToHistory(password);
 }
 
-// Cryptographically secure password generation
+
 function generateCryptoPassword(length, includeLowercase, includeUppercase, includeNumbers, includeSymbols) {
     let chars = '';
     if (includeLowercase) chars += characterSets.lowercase;
@@ -119,7 +118,7 @@ function generateCryptoPassword(length, includeLowercase, includeUppercase, incl
     return password;
 }
 
-// Pronounceable password generation
+
 function generatePronounceablePassword(length) {
     const vowels = 'aeiou';
     const consonants = 'bcdfghjklmnpqrstvwxyz';
@@ -127,27 +126,27 @@ function generatePronounceablePassword(length) {
 
     for (let i = 0; i < length; i++) {
         if (i % 2 === 0) {
-            // Even positions: consonants
+         
             password += consonants[Math.floor(Math.random() * consonants.length)];
         } else {
-            // Odd positions: vowels
+            
             password += vowels[Math.floor(Math.random() * vowels.length)];
         }
     }
 
-    // Capitalize first letter
+   
     password = password.charAt(0).toUpperCase() + password.slice(1);
 
     return password;
 }
 
-// Pattern-based password generation
+
 function generatePatternPassword(length) {
     const patterns = [
-        'CvccvC!n', // Capital, vowel, consonant, consonant, vowel, Capital, symbol, number
-        'cVcc!nc',  // consonant, Vowel, consonant, consonant, symbol, number, consonant
-        'Cvcn!cV',  // Capital, vowel, consonant, number, symbol, consonant, Vowel
-        'nCvc!cv'   // number, Capital, vowel, consonant, symbol, consonant, vowel
+        'CvccvC!n',
+        'cVcc!nc', 
+        'Cvcn!cV',   
+        'nCvc!cv'   
     ];
 
     const pattern = patterns[Math.floor(Math.random() * patterns.length)];
@@ -157,28 +156,28 @@ function generatePatternPassword(length) {
         if (password.length >= length) break;
 
         switch (char) {
-            case 'C': // Uppercase consonant
+            case 'C':
                 password += 'BCDFGHJKLMNPQRSTVWXYZ'[Math.floor(Math.random() * 21)];
                 break;
-            case 'c': // Lowercase consonant
+            case 'c':
                 password += 'bcdfghjklmnpqrstvwxyz'[Math.floor(Math.random() * 21)];
                 break;
-            case 'V': // Uppercase vowel
+            case 'V': 
                 password += 'AEIOU'[Math.floor(Math.random() * 5)];
                 break;
-            case 'v': // Lowercase vowel
+            case 'v': 
                 password += 'aeiou'[Math.floor(Math.random() * 5)];
                 break;
-            case 'n': // Number
+            case 'n':
                 password += '0123456789'[Math.floor(Math.random() * 10)];
                 break;
-            case '!': // Symbol
+            case '!': 
                 password += '!@#$%^&*'[Math.floor(Math.random() * 8)];
                 break;
         }
     }
 
-    // Fill remaining length with random characters
+   
     const allChars = characterSets.lowercase + characterSets.uppercase + characterSets.numbers + characterSets.symbols;
     while (password.length < length) {
         password += allChars[Math.floor(Math.random() * allChars.length)];
@@ -187,7 +186,7 @@ function generatePatternPassword(length) {
     return password;
 }
 
-// Memorable password generation
+
 function generateMemorablePassword(length) {
     let password = '';
     const separator = '-';
@@ -201,7 +200,7 @@ function generateMemorablePassword(length) {
         }
     }
 
-    // Add numbers if there's space
+    
     if (password.length < length - 1) {
         password += separator + Math.floor(Math.random() * 100);
     }
@@ -209,14 +208,14 @@ function generateMemorablePassword(length) {
     return password;
 }
 
-// Calculate password strength
+
 function updatePasswordStrength(password) {
     let strength = 0;
 
-    // Length factor
+  
     strength += Math.min(password.length / 4, 10);
 
-    // Character variety
+   
     const hasLower = /[a-z]/.test(password);
     const hasUpper = /[A-Z]/.test(password);
     const hasNumber = /[0-9]/.test(password);
@@ -225,11 +224,11 @@ function updatePasswordStrength(password) {
     const varietyCount = [hasLower, hasUpper, hasNumber, hasSymbol].filter(Boolean).length;
     strength += varietyCount * 5;
 
-    // Entropy approximation
+    
     const charSetSize = new Set(password).size;
     strength += Math.log2(charSetSize) * 2;
 
-    // Update strength meter and label
+    
     strengthMeter.className = 'strength-fill';
 
     if (strength < 10) {
@@ -247,7 +246,7 @@ function updatePasswordStrength(password) {
     }
 }
 
-// Add password to history
+
 function addToHistory(password) {
     passwordHistory.unshift(password);
     if (passwordHistory.length > 5) {
@@ -257,7 +256,7 @@ function addToHistory(password) {
     updateHistoryDisplay();
 }
 
-// Update history display
+
 function updateHistoryDisplay() {
     historyList.innerHTML = '';
 
@@ -281,10 +280,10 @@ function updateHistoryDisplay() {
     });
 }
 
-// Copy to clipboard function
+
 function copyToClipboard(text) {
     navigator.clipboard.writeText(text).then(() => {
-        // Visual feedback
+      
         const originalText = copyBtn.innerHTML;
         copyBtn.innerHTML = '<span>Copied!</span>';
         setTimeout(() => {
@@ -296,7 +295,7 @@ function copyToClipboard(text) {
     });
 }
 
-// Event listeners
+
 generateBtn.addEventListener('click', generatePassword);
 copyBtn.addEventListener('click', () => {
     const password = passwordOutput.textContent;
@@ -305,5 +304,5 @@ copyBtn.addEventListener('click', () => {
     }
 });
 
-// Generate initial password
+
 generatePassword();

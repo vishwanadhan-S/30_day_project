@@ -32,7 +32,7 @@ search.addEventListener('click', () => {
             const humidity = document.querySelector('.weather-details .humidity span');
             const wind = document.querySelector('.weather-details .wind span');
 
-            // Corrected image names
+           
             switch (data.weather[0].main) {
                 case 'Clear':
                     image.src = 'clear.png';
@@ -66,7 +66,7 @@ search.addEventListener('click', () => {
         });
 });
 
-// Optional: Press Enter to search
+
 document.querySelector('.search-box input').addEventListener('keyup', (e) => {
     if (e.key === 'Enter') search.click();
 });
