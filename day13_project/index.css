@@ -1,0 +1,164 @@
+ * {
+     margin: 0;
+     padding: 0;
+     box-sizing: border-box;
+     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+ }
+
+ body {
+     background: black;
+     color: white;
+     min-height: 100vh;
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     justify-content: center;
+     padding: 20px;
+ }
+
+ .container {
+     max-width: 800px;
+     width: 100%;
+     background: rgba(0, 0, 0, 0.7);
+     border-radius: 20px;
+     padding: 30px;
+     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+     text-align: center;
+ }
+
+ h1 {
+     font-size: 2.5rem;
+     margin-bottom: 10px;
+     text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+ }
+
+ .subtitle {
+     font-size: 1.2rem;
+     margin-bottom: 30px;
+     opacity: 0.9;
+ }
+
+ .input-section {
+     display: flex;
+     flex-wrap: wrap;
+     gap: 15px;
+     justify-content: center;
+     margin-bottom: 30px;
+ }
+
+ .date-input,
+ .time-input {
+     padding: 12px 15px;
+     border: none;
+     border-radius: 10px;
+     font-size: 1rem;
+     background: rgba(255, 255, 255, 0.9);
+     color: #333;
+     min-width: 200px;
+ }
+
+ .btn {
+     padding: 12px 25px;
+     border: none;
+     border-radius: 10px;
+     font-size: 1rem;
+     font-weight: bold;
+     cursor: pointer;
+     transition: all 0.3s ease;
+ }
+
+ .start-btn {
+     background: #4CAF50;
+     color: white;
+ }
+
+ .start-btn:hover {
+     background: #45a049;
+     transform: translateY(-2px);
+ }
+
+ .reset-btn {
+     background: #f44336;
+     color: white;
+ }
+
+ .reset-btn:hover {
+     background: #d32f2f;
+     transform: translateY(-2px);
+ }
+
+ .timer-display {
+     display: flex;
+     justify-content: center;
+     gap: 15px;
+     margin: 30px 0;
+ }
+
+ .time-unit {
+     background: rgba(255, 255, 255, 0.1);
+     border-radius: 15px;
+     padding: 20px 15px;
+     min-width: 120px;
+     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+     backdrop-filter: blur(10px);
+ }
+
+ .time-value {
+     font-size: 3.5rem;
+     font-weight: bold;
+     margin-bottom: 5px;
+     text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+ }
+
+ .time-label {
+     font-size: 1rem;
+     opacity: 0.8;
+     text-transform: uppercase;
+     letter-spacing: 1px;
+ }
+
+ .message {
+     font-size: 1.5rem;
+     margin-top: 20px;
+     padding: 15px;
+     border-radius: 10px;
+     background: rgba(76, 175, 80, 0.2);
+     display: none;
+ }
+
+ .expired {
+     background: rgba(244, 67, 54, 0.2);
+ }
+
+ @media (max-width: 768px) {
+     .timer-display {
+         flex-wrap: wrap;
+     }
+
+     .time-unit {
+         min-width: 100px;
+     }
+
+     .time-value {
+         font-size: 2.5rem;
+     }
+ }
+
+ @media (max-width: 480px) {
+     .container {
+         padding: 20px;
+     }
+
+     h1 {
+         font-size: 2rem;
+     }
+
+     .time-unit {
+         min-width: 80px;
+         padding: 15px 10px;
+     }
+
+     .time-value {
+         font-size: 2rem;
+     }
+ }

@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countdown Timer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .input-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+
+        .date-input,
+        .time-input {
+            padding: 12px 15px;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            background: rgba(255, 255, 255, 0.9);
+            color: #333;
+            min-width: 200px;
+        }
+
+        .btn {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .start-btn {
+            background: #4CAF50;
+            color: white;
+        }
+
+        .start-btn:hover {
+            background: #45a049;
+            transform: translateY(-2px);
+        }
+
+        .reset-btn {
+            background: #f44336;
+            color: white;
+        }
+
+        .reset-btn:hover {
+            background: #d32f2f;
+            transform: translateY(-2px);
+        }
+
+        .timer-display {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 30px 0;
+        }
+
+        .time-unit {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 20px 15px;
+            min-width: 120px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        .time-value {
+            font-size: 3.5rem;
+            font-weight: bold;
+            margin-bottom: 5px;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        .time-label {
+            font-size: 1rem;
+            opacity: 0.8;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .message {
+            font-size: 1.5rem;
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 10px;
+            background: rgba(76, 175, 80, 0.2);
+            display: none;
+        }
+
+        .expired {
+            background: rgba(244, 67, 54, 0.2);
+        }
+
+        @media (max-width: 768px) {
+            .timer-display {
+                flex-wrap: wrap;
+            }
+
+            .time-unit {
+                min-width: 100px;
+            }
+
+            .time-value {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .time-unit {
+                min-width: 80px;
+                padding: 15px 10px;
+            }
+
+            .time-value {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Countdown Timer</h1>
+        <p class="subtitle">Set a target date and time to count down to</p>
+
+        <div class="input-section">
+            <input type="date" class="date-input" id="dateInput">
+            <input type="time" class="time-input" id="timeInput">
+            <button class="btn start-btn" id="startBtn">Start Countdown</button>
+            <button class="btn reset-btn" id="resetBtn">Reset</button>
+        </div>
+
+        <div class="timer-display">
+            <div class="time-unit">
+                <div class="time-value" id="days">00</div>
+                <div class="time-label">Days</div>
+            </div>
+            <div class="time-unit">
+                <div class="time-value" id="hours">00</div>
+                <div class="time-label">Hours</div>
+            </div>
+            <div class="time-unit">
+                <div class="time-value" id="minutes">00</div>
+                <div class="time-label">Minutes</div>
+            </div>
+            <div class="time-unit">
+                <div class="time-value" id="seconds">00</div>
+                <div class="time-label">Seconds</div>
+            </div>
+        </div>
+
+        <div class="message" id="message">Countdown Complete!</div>
+    </div>
+
+    <script>
+        // DOM Elements
+        const dateInput = document.getElementById('dateInput');
+        const timeInput = document.getElementById('timeInput');
+        const startBtn = document.getElementById('startBtn');
+        const resetBtn = document.getElementById('resetBtn');
+        const daysEl = document.getElementById('days');
+        const hoursEl = document.getElementById('hours');
+        const minutesEl = document.getElementById('minutes');
+        const secondsEl = document.getElementById('seconds');
+        const messageEl = document.getElementById('message');
+
+        // Set minimum date to today
+        const today = new Date();
+        const formattedDate = today.toISOString().split('T')[0];
+        dateInput.min = formattedDate;
+
+        // Set default time to one hour from now
+        const oneHourLater = new Date(today.getTime() + 60 * 60 * 1000);
+        const formattedTime = oneHourLater.toTimeString().slice(0, 5);
+        timeInput.value = formattedTime;
+
+        // Variables
+        let countdownInterval;
+        let targetDate;
+
+        // Start Countdown
+        startBtn.addEventListener('click', startCountdown);
+
+        // Reset Countdown
+        resetBtn.addEventListener('click', resetCountdown);
+
+        function startCountdown() {
+            // Clear any existing countdown
+            clearInterval(countdownInterval);
+
+            // Get the target date and time
+            const selectedDate = dateInput.value;
+            const selectedTime = timeInput.value;
+
+            if (!selectedDate || !selectedTime) {
+                alert('Please select both date and time');
+                return;
+            }
+
+            // Create target date object
+            targetDate = new Date(`${selectedDate}T${selectedTime}`);
+
+            // Check if the target date is in the future
+            if (targetDate <= new Date()) {
+                alert('Please select a future date and time');
+                return;
+            }
+
+            // Hide message
+            messageEl.style.display = 'none';
+
+            // Start the countdown
+            updateCountdown();
+            countdownInterval = setInterval(updateCountdown, 1000);
+        }
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const timeLeft = targetDate - now;
+
+            // If countdown is over
+            if (timeLeft < 0) {
+                clearInterval(countdownInterval);
+                displayCountdownComplete();
+                return;
+            }
+
+            // Calculate time units
+            const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+            // Update display
+            daysEl.textContent = formatTime(days);
+            hoursEl.textContent = formatTime(hours);
+            minutesEl.textContent = formatTime(minutes);
+            secondsEl.textContent = formatTime(seconds);
+        }
+
+        function displayCountdownComplete() {
+            daysEl.textContent = '00';
+            hoursEl.textContent = '00';
+            minutesEl.textContent = '00';
+            secondsEl.textContent = '00';
+
+            messageEl.textContent = 'Countdown Complete!';
+            messageEl.classList.remove('expired');
+            messageEl.style.display = 'block';
+        }
+
+        function resetCountdown() {
+            clearInterval(countdownInterval);
+
+            // Reset display
+            daysEl.textContent = '00';
+            hoursEl.textContent = '00';
+            minutesEl.textContent = '00';
+            secondsEl.textContent = '00';
+
+            // Hide message
+            messageEl.style.display = 'none';
+
+            // Reset inputs to default
+            dateInput.value = formattedDate;
+            timeInput.value = formattedTime;
+        }
+
+        function formatTime(time) {
+            return time < 10 ? `0${time}` : time;
+        }
+    </script>
+</body>
+
+</html>

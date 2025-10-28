@@ -1,0 +1,116 @@
+* {
+    margin: 0;
+    margin: 0;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+body {
+    background-color: bisque;
+}
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+
+}
+
+.con {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: auto;
+    text-align: center;
+    background-color: #060a47;
+    color: white;
+    gap: 10px;
+    border-radius: 10px;
+}
+
+.photo {
+    margin-top: 10px;
+}
+
+.photo img {
+    width: 100px;
+    height: 100px;
+    border: 1px solid black;
+    border-radius: 50%;
+    margin: auto;
+}
+
+.link {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px;
+}
+
+.col-2 {
+    margin-top: 20px;
+    background-color: white;
+    padding: 30px;
+    border: 1px solid white;
+    border-radius: 10px;
+}
+
+.hr {
+    margin: 10px 0;
+    border: 2px solid darkblue;
+    border-radius: 20px;
+}
+
+.col-3 {
+    background-color: white;
+    margin-top: 20px;
+    padding: 20px;
+    border: 2px solid white;
+    border-radius: 10px;
+}
+
+.table-th {
+    background-color: lightblue;
+}
+
+.table-th th {
+    padding: 20px;
+}
+
+.col-4 {
+    background-color: white;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 10px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 350px 350px 300px;
+    background-color: white;
+}
+
+.gap {
+    margin: 20px 0;
+    font-weight: bolder;
+    
+}
+
+.while {
+    width: 300px;
+    height: 10px;
+    background-color: white;
+    border: 1px solid black;
+    margin-top: 10px;
+    border-radius: 20px;
+}
+
+.while .bule {
+    background-color: rgb(3, 48, 63);
+    height: 8px;
+    border-radius: 20px;
+    overflow: hidden;
+}
+.h3{
+    color:  rgb(3, 48, 63);
+}

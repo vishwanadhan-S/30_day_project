@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!--     <button id="toggleButton">Show/Hide Section</button>
+
+    <div id="mySection" style="display: none; margin-top: 20px;">
+        <h2 id="mySection">This is the section</h2>
+        <p>You can show or hide this content by clicking the button.</p> -->
+
+    <!-- <div class="card" id="productCard" style="padding: 20px; border: 1px solid #ccc; width: 200px;">
+        <h3>Product Name</h3>
+        <p>$25.00</p>
+        <button id="addButton">Add to Cart</button>
+    </div> -->
+
+
+
+
+    <h1>Student Marks</h1>
+
+    <button onclick="printAll()">Print All Students</button>
+    <button onclick="filterPassed()">Show Passed Students</button>
+    <button onclick="sortByMarks()">Sort by Marks</button>
+    <button onclick="showStats()">Show Stats</button>
+
+    <div id="output"></div>
+
+
+
+
+
+
+
+
+    <script>
+        /*  /*  const button = document.getElementById('toggleButton');
+       const section = document.getElementById('mySection');
+
+           button.addEventListener('click', () => {
+                if (section.style.display === 'none') {
+                    section.style.display = 'block';  // Show section
+                } else {
+                    section.style.display = 'none';   // Hide section
+                }
+            });
+        button.addEventListener('click', () => {
+            section.classList.toggle('hidden');
+        });  */
+
+        /*  function addToCart() {
+             // Select the card and button elements
+             const card = document.getElementById('productCard');
+             const button = document.getElementById('addButton');
+ 
+             // Change background color of the card to green
+             card.style.backgroundColor = 'green';
+ 
+             // Change button text
+             button.textContent = 'Added to Cart';
+ 
+             // Disable the button
+             button.disabled = true;
+         }
+ 
+         // Add click event to the button
+         document.getElementById('addButton').addEventListener('click', addToCart);
+ 
+  */
+
+        // Array of student objects
+        const students = [
+            { name: "Alice", rollNo: 101, marks: 85 },
+            { name: "Bob", rollNo: 102, marks: 38 },
+            { name: "Charlie", rollNo: 103, marks: 72 },
+            { name: "David", rollNo: 104, marks: 45 },
+            { name: "Eve", rollNo: 105, marks: 90 },
+            { name: "Frank", rollNo: 106, marks: 33 }
+        ];
+
+        // Function to create table HTML
+        function createTable(studentArray) {
+            let table = `<table>
+    <tr>
+      <th>Roll No</th>
+      <th>Name</th>
+      <th>Marks</th>
+    </tr>`;
+            studentArray.forEach(student => {
+                const statusClass = student.marks >= 40 ? 'pass' : 'fail';
+                const topperClass = student.marks > 80 ? 'topper' : '';
+                table += `<tr class="${statusClass}">
+      <td>${student.rollNo}</td>
+      <td class="${topperClass}">${student.name}</td>
+      <td>${student.marks}</td>
+    </tr>`;
+            });
+            table += `</table>`;
+            return table;
+        }
+
+        // 1. Print all students
+        function printAll() {
+            document.getElementById('output').innerHTML = createTable(students);
+        }
+
+        // 2. Filter passed students (marks >= 40)
+        function filterPassed() {
+            const passed = students.filter(student => student.marks >= 40);
+            document.getElementById('output').innerHTML = createTable(passed);
+        }
+
+        // 3. Sort students by marks (descending)
+        function sortByMarks() {
+            const sorted = [...students].sort((a, b) => b.marks - a.marks);
+            document.getElementById('output').innerHTML = createTable(sorted);
+        }
+
+        // 4. Show stats: average marks, passed vs failed
+        function showStats() {
+            const totalMarks = students.reduce((sum, s) => sum + s.marks, 0);
+            const average = (totalMarks / students.length).toFixed(2);
+            const passedCount = students.filter(s => s.marks >= 40).length;
+            const failedCount = students.length - passedCount;
+
+            const statsHTML = `
+    <h2>Statistics</h2>
+    <p>Average Marks: ${average}</p>
+    <p>Passed: ${passedCount}</p>
+    <p>Failed: ${failedCount}</p>
+  `;
+            document.getElementById('output').innerHTML = statsHTML;
+        }
+
+        // Initially show all students
+        printAll();
+
+    </script>
+</body>
+
+</html>

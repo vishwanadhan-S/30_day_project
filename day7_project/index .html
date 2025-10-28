@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="#" class="logo">Pencil<span>box</span></a>
+
+           
+            <input type="checkbox" id="menu-toggle">
+            <label for="menu-toggle" class="menu-button">
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
+
+            <ul class="nav-menu">
+                <li class="nav-item" style="--i: 1;">
+                    <a href="#" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item" style="--i: 2;">
+                    <a href="#" class="nav-link">About</a>
+                </li>
+                <li class="nav-item" style="--i: 3;">
+                    <a href="#" class="nav-link">Services</a>
+                </li>
+               
+            </ul>
+        </div>
+    </nav>
+
+    <div class="content">
+        <div class="card">
+            <h1>Choosing a Pencil Box</h1>
+            <p>When picking a pencil box, consider:</p>
+            <ul>
+                <li><b>Durability:</b> Will it survive being tossed in a backpack?</li>
+                <li><b>Capacity:</b> How many items do you need to carry?</li>
+                <li><b>Compartments:</b> Do you prefer one big space or several organized sections?</li>
+                <li><b>Style:</b> What design or color do you like?</li>
+            </ul>
+            <p>The navbar uses a checkbox hack to toggle the mobile menu without JavaScript.</p>
+        </div>
+
+        <div class="card">
+            <h2>"Pencil Works" vs. Related Terms</h2>
+            <p>The responsive behavior is achieved through CSS media queries:</p>
+            <ul>
+                <li><strong>Pencil Works:</strong> A broad, slightly formal term for the collection or body of work done in pencil.</li>
+                <li><strong>Pencil Drawing:</strong> The more common term for a single piece of art.</li>
+                <li><strong>Graphite Drawing:</strong> A more technical term, specifying the core material of the pencil. Many professional artists prefer this term.</li>
+            </ul>
+            <p>The mobile menu toggle uses a hidden checkbox and the :checked pseudo-class to show/hide the menu.</p>
+        </div>
+    </div>
+</body>
+
+</html>

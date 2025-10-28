@@ -1,0 +1,170 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #333;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.container {
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    width: 90%;
+    max-width: 600px;
+    padding: 30px;
+    text-align: center;
+}
+
+h1 {
+    color: #333;
+    margin-bottom: 20px;
+    font-size: 2.2rem;
+}
+
+.screen {
+    display: none;
+}
+
+.active {
+    display: block;
+}
+
+#start-screen p {
+    color: #666;
+    margin-bottom: 30px;
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+.btn {
+    background: lightgreen;
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 50px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin: 10px 0;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.btn:active {
+    transform: translateY(0);
+}
+
+#question {
+    font-size: 1.4rem;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.options {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 25px;
+}
+
+.option {
+    background-color: #f5f7ff;
+    border: 2px solid #e1e5f2;
+    border-radius: 10px;
+    padding: 15px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-align: left;
+    font-size: 1rem;
+}
+
+.option:hover {
+    background-color: #e8edff;
+    border-color: #6a11cb;
+}
+
+.option.selected {
+    background-color: #d6e4ff;
+    border-color: #2575fc;
+}
+
+.option.correct {
+    background-color: #d4edda;
+    border-color: #28a745;
+}
+
+.option.incorrect {
+    background-color: #f8d7da;
+    border-color: #dc3545;
+}
+
+.feedback {
+    margin: 15px 0;
+    padding: 12px;
+    border-radius: 8px;
+    font-weight: 500;
+}
+
+.correct-feedback {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.incorrect-feedback {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+#progress {
+    margin: 20px 0;
+    font-weight: 500;
+    color: #666;
+}
+
+#results-screen h2 {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+#score {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #2575fc;
+    margin: 20px 0;
+}
+
+.score-message {
+    font-size: 1.2rem;
+    margin-bottom: 25px;
+    color: #555;
+}
+
+.hidden {
+    display: none;
+}
+
+@media (max-width: 500px) {
+    .container {
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    #question {
+        font-size: 1.2rem;
+    }
+}

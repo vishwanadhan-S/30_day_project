@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unique Weather App</title>
+    <link rel="stylesheet" href="index.css">
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+</head>
+
+<body>
+    <div class="container">
+       
+        <div class="search-box">
+            <box-icon style="margin-left: 10px;" name='location-plus'></box-icon>
+            <input type="text" placeholder="Enter your location">
+            <button><box-icon name="search"></box-icon></button>
+        </div>
+
+        <p class="city-hide">city hide</p>
+
+       
+        <div class="weather-box">
+            <div class="box">
+                <div class="info-weather">
+                    <div class="weather">
+                        <img src="colud.png" alt="weather">
+                        <p class="temperature">0 <span>°C</span></p>
+                        <p class="description">Broken Clouds</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+        <div class="weather-details">
+            <div class="humidity">
+                <box-icon name="water"></box-icon>
+                <div class="text">
+                    <div class="info-humidity"><span>0%</span></div>
+                    <p>Humidity</p>
+                </div>
+            </div>
+
+            <div class="wind">
+                <box-icon name="wind"></box-icon>
+                <div class="text">
+                    <div class="info-wind"><span>0 Km/h</span></div>
+                    <p>Wind Speed</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Not Found Message -->
+        <div class="not-found">
+            <div class="box">
+                <img src="notfound.jpg" alt="not found">
+                <p>Oops! Location not found</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- JS -->
+    <script src="index.js"></script>
+</body>
+
+</html>

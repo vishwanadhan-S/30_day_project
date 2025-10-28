@@ -1,0 +1,126 @@
+ * {
+     margin: 0;
+     padding: 0;
+     box-sizing: border-box;
+     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+ }
+
+ body {
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     min-height: 100vh;
+     background: white;
+     padding: 20px;
+ }
+
+ .calculator {
+     width: 320px;
+     background-color: white;
+     border: 1px solid black;
+     border-radius: 20px;
+     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+     overflow: hidden;
+ }
+
+ .display {
+     padding: 30px 20px;
+     background-color: white;
+     text-align: right;
+     color: black;
+     min-height: 120px;
+     display: flex;
+     flex-direction: column;
+     justify-content: flex-end;
+ }
+
+ .previous-operand {
+     font-size: 18px;
+     color: white;
+     min-height: 27px;
+     overflow: hidden;
+     text-overflow: ellipsis;
+ }
+
+ .current-operand {
+     font-size: 40px;
+     font-weight: 300;
+     overflow: hidden;
+     text-overflow: ellipsis;
+ }
+
+ .buttons {
+     display: grid;
+     grid-template-columns: repeat(4, 1fr);
+     gap: 1px;
+     background-color: white;
+     border: 1px solid black;
+ }
+
+ button {
+     border: none;
+     background-color: white;
+     color: black;
+     font-size: 20px;
+     padding: 20px 0;
+     cursor: pointer;
+     transition: all 0.2s ease;
+     outline: none;
+     border: 1px solid black;
+ }
+
+ button:hover {
+     background-color: #2a2a3e;
+ }
+
+ button:active {
+     background-color: #3a3a4e;
+     transform: scale(0.95);
+ }
+
+ .operator {
+     background-color: white;
+     color: black;
+ }
+
+ .operator:hover {
+     background-color: #1f4470;
+ }
+
+ .equals {
+     background-color: white;
+     color: black;
+     grid-column: span 2;
+ }
+
+ .equals:hover {
+     background-color: #f95570;
+ }
+
+ .clear {
+
+     background-color: #0f3460;
+     color: #ff9a3c;
+     border-radius: 80%;
+ }
+
+ .delete {
+     background-color: white;
+     color: black;
+ }
+
+ .clear:hover,
+ .delete:hover {
+     background-color: #1f4470;
+ }
+
+ @media (max-width: 400px) {
+     .calculator {
+         width: 100%;
+         max-width: 320px;
+     }
+
+     button {
+         padding: 18px 0;
+     }
+ }

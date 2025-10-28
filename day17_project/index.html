@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>question</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Knowledge Challenge</h1>
+
+       
+        <div id="start-screen" class="screen active">
+            <p>Test your knowledge with this interactive quiz! You'll answer 5 questions on various topics. Select the
+                best answer for each question and see how you score at the end.</p>
+            <button id="start-btn" class="btn">Start Quiz</button>
+        </div>
+
+        
+        <div id="quiz-screen" class="screen">
+            <div id="progress">Question 1 of 5</div>
+            <h2 id="question">Question will appear here</h2>
+            <div class="options">
+                <div class="option" data-index="0">Option 1</div>
+                <div class="option" data-index="1">Option 2</div>
+                <div class="option" data-index="2">Option 3</div>
+                <div class="option" data-index="3">Option 4</div>
+            </div>
+            <div id="feedback" class="feedback hidden"></div>
+            <button id="next-btn" class="btn">Next Question</button>
+        </div>
+
+       
+        <div id="results-screen" class="screen">
+            <h2>Quiz Completed!</h2>
+            <div id="score">0/5</div>
+            <p class="score-message" id="score-message">Keep practicing to improve your knowledge!</p>
+            <button id="restart-btn" class="btn">Take Quiz Again</button>
+        </div>
+    </div>
+
+
+</body>
+<script src="index.js"></script>
+
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>Advanced Password Generator</h1>
+            <p class="subtitle">Create strong, secure passwords with multiple generation algorithms</p>
+        </header>
+
+        <div class="content">
+            <div class="settings-panel">
+                <div class="form-group">
+                    <label for="length">Password Length: <span class="length-value" id="lengthValue">12</span></label>
+                    <input type="range" id="length" min="4" max="32" value="12">
+                </div>
+
+                <div class="form-group">
+                    <label>Character Types:</label>
+                    <div class="checkbox-group">
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="lowercase" checked>
+                            <label for="lowercase">Lowercase (a-z)</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="uppercase" checked>
+                            <label for="uppercase">Uppercase (A-Z)</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="numbers" checked>
+                            <label for="numbers">Numbers (0-9)</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="symbols">
+                            <label for="symbols">Symbols (!@#$%)</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="algorithm">Generation Algorithm:</label>
+                    <select id="algorithm">
+                        <option value="crypto">Cryptographically Secure (Recommended)</option>
+                        <option value="pronounceable">Pronounceable Password</option>
+                        <option value="pattern">Pattern-Based</option>
+                        <option value="memorable">Memorable Passphrase</option>
+                    </select>
+                </div>
+
+                <button class="btn btn-generate" id="generateBtn">
+                    <span>Generate Password</span>
+                </button>
+
+                <div class="algorithm-info">
+                    <div><span class="info-icon">i</span> <strong>Algorithm Information:</strong></div>
+                    <div id="algorithmDescription">Uses cryptographically secure random number generation for maximum
+                        security.</div>
+                </div>
+            </div>
+
+            <div class="password-display">
+                <div class="generated-password" id="passwordOutput">
+                    Your password will appear here
+                </div>
+
+                <div class="strength-label" id="strengthLabel">Password Strength: None</div>
+                <div class="strength-meter">
+                    <div class="strength-fill" id="strengthMeter"></div>
+                </div>
+
+                <button class="btn btn-copy" id="copyBtn">
+                    <span>Copy to Clipboard</span>
+                </button>
+
+                <div class="password-history">
+                    <div class="history-title">Recent Passwords</div>
+                    <div id="historyList"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>Generated passwords are created locally in your browser and are not transmitted over the internet.</p>
+        </div>
+    </div>
+    <script src="index.js"></script>
+</body>
+
+</html>
